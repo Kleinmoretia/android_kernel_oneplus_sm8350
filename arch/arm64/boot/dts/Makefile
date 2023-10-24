@@ -1,37 +1,27 @@
-# SPDX-License-Identifier: GPL-2.0
+vendor := $(srctree)/$(src)
+
 #ifndef VENDOR_EDIT
-#subdir-y += actions
-#subdir-y += al
-#subdir-y += allwinner
-#subdir-y += altera
-#subdir-y += amd
-#subdir-y += amlogic
-#subdir-y += apm
-#subdir-y += arm
-#subdir-y += bitmain
-#subdir-y += broadcom
-#subdir-y += cavium
-#subdir-y += exynos
-#subdir-y += freescale
-#subdir-y += hisilicon
-#subdir-y += intel
-#subdir-y += lg
-#subdir-y += marvell
-#subdir-y += mediatek
-#subdir-y += nvidia
-#subdir-y += realtek
-#subdir-y += renesas
-#subdir-y += rockchip
-#subdir-y += socionext
-#subdir-y += sprd
-#subdir-y += synaptics
-#subdir-y += ti
-#subdir-y += xilinx
-#subdir-y += zte
-#endif/*VENDOR_EDIT*/
-subdir-y += qcom
-dtstree	:= $(srctree)/$(src)
-vendor  := $(dtstree)/vendor
-ifneq "$(wildcard $(vendor)/Makefile)" ""
-    subdir-y += vendor
+#ifneq "$(wildcard $(vendor)/qcom)" ""
+#	subdir-y += qcom
+#endif
+#else
+#	subdir-y += 20031
+	subdir-y += qcom
+ifeq ($(strip $(BRAND_SHOW_FLAG)), oneplus)
+	subdir-y += oplus/lemonadev
+	subdir-y += oplus/martini
+else
+	subdir-y += oplus/peacock
+	subdir-y += oplus/fussi
+	subdir-y += oplus/luwu
+	subdir-y += oplus/eva
+	subdir-y += oplus/fluorite
+	subdir-y += oplus/walle
+	subdir-y += oplus/libai
+	subdir-y += oplus/lantian
+	subdir-y += oplus/lunaa
+	subdir-y += oplus/taylor
+	subdir-y += oplus/garbo
+
 endif
+#endif
